@@ -1,9 +1,11 @@
 ---
 - name: Test Connectivity to managed hosts 
   hosts: managed
-  gather_facts: false
 
   tasks:
    - name: Ping all managed hosts 
      ansible.builtin.ping:
+   - name: Print Message
+     ansible.builtin.debug:
+       msg: Hello World, All hosts pinged successfully !!
 
