@@ -1,0 +1,20 @@
+---
+- name: Install and configure niginx on managed hosts
+  hosts: managed
+  become: yes
+  gather_facts: false
+
+  tasks: 
+    - name: Update apt update
+      ansible.builtin.apt:
+        update_cache: yes
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+    - name: Start Nginx Service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes 
+
