@@ -1,0 +1,21 @@
+---
+- name: Install and Start Apache Web Server
+  hosts: all
+  become: true
+
+  tasks:
+   - name: Gather System facts
+     ansible.builtin.setup:
+   - name: Install Apache on Ubuntu
+     ansible.builtin.apt:
+       name: apache2
+       state: present
+       update_cache: yes
+     when: ansible_os_family == "Debian"
+
+   - name: start and enable Apache on Ubuntu
+     ansible.builtin.service:
+       name: apache2
+       state: started
+       enabled: yes
+     when: ansible_os_family == "Debian"
