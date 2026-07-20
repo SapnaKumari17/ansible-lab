@@ -1,0 +1,17 @@
+---
+- name: Create user and groups
+  hosts: managed 
+  become: true
+
+  tasks:
+    - name: Create devops users  
+      ansible.builtin.group:
+        name: devops
+        state: present
+    - name: Create Rajesh user
+      ansible.builtin.user:
+        name: rajesh
+        group: devops
+        shell: /bin/bash
+        create_home: yes
+        state: present
