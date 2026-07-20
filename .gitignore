@@ -1,4 +1,3 @@
 ansible_home/
 *.retry
 .env
-.env
