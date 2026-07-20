@@ -1,2 +1,15 @@
 ---
+- name: Package Management
+  hosts: managed
+  become: true
+  tasks:
+    - name: Install Git 
+      ansible.builtin.apt:
+        name: git
+        state: present 
+        update_cache: yes
 
+    - name: Install Curl
+      ansible.builtin.apt:
+        name: curl
+        state: present
