@@ -1,0 +1,20 @@
+---
+- name: File Management Playbook
+  hosts: managed
+  become: true 
+  tasks:
+    - name: Create Devops Repository 
+      ansible.builtin.file:
+        path: /opt/devops
+        state: directory
+        mode: '0755'
+    - name: Create Info File 
+      ansible.builtin.file:
+        path: /opt/devops/info.txt
+        state: touch
+        mode: '0644'
+    - name: Create log Directory
+      ansible.builtin.file:
+        path: /opt/devops/logs
+        state: directory
+        mode: '0755' 
