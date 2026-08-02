@@ -1,0 +1,15 @@
+---
+- name: Copy Files Playbook
+  hosts: managed
+  become: true
+  tasks:
+    - name: Create destination directory
+      ansible.builtin.file:
+        path: /opt/devops
+        state: directory
+        mode: '0755'
+    - name: Copy devops.txt to managed hosts
+      ansible.builtin.copy:
+        src: ../files/devops.txt
+        dest: /opt/devops/devops.txt
+        mode: '0644'
